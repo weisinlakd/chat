@@ -1,8 +1,8 @@
 # Notas:
 
-Este es un pequeño servidor de express listo para ejecutarse y servir la carpeta public en la web.
+Este es un pequeño servidor de express que funciona como un chat listo para ejecutarse.
 
-Recuerden que deben de reconstruir los módulos de node con el comando
+Hay que instalar los node_modules/
 
 ```
 npm install
