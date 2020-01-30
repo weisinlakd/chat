@@ -2,6 +2,8 @@ var socket = io();
 
 var params = new URLSearchParams(window.location.search)
 
+
+
 if (!params.has('nombre') || !params.has('sala')) {
     window.location = 'index.html'
     throw new Error ('El nombre y sala son necesarios')
@@ -9,7 +11,8 @@ if (!params.has('nombre') || !params.has('sala')) {
 
 var usuario = {
     nombre: params.get('nombre'),
-    sala: params.get('sala')
+    sala: params.get('sala'),
+    foto: params.get('foto')
 }
 
 console.log(usuario);
@@ -17,7 +20,8 @@ console.log(usuario);
 socket.on('connect', function() {
 
     socket.emit('ingresarChat', usuario, function (resp){
-        console.log("usuarios en sala", resp)
+        // console.log("usuarios en sala", resp)
+        renderizarUsuarios(resp)
     })
     // console.log(usuario, 'Conectado al servidor');
 });
@@ -53,14 +57,16 @@ socket.on('enviarMensaje', (mensaje) => {
 
 socket.on('crearMensaje', (mensaje) => {
 
-    console.log('Servidor:', mensaje);
+    // console.log('Servidor:', mensaje);
+    renderizarMensajes(mensaje , false);
+    scrollBottom();
 
 });
 
 
 socket.on('listaPersona', (personas) => {
 
-    console.log(personas);
+    renderizarUsuarios(personas)
 
 });
 

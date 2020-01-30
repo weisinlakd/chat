@@ -17,8 +17,6 @@ module.exports.io = socketIO(server);
 require('./sockets/socket');
 
 
-// 3513525777 n* 12322 y 12321
-
 
 server.listen(port, (err) => {
 

@@ -1,9 +1,18 @@
-const crearMensaje = (nombre, mensaje) => {
+const crearMensaje = (nombre, mensaje, isAdmin, foto) => {
+    if (isAdmin){
 
-    return {
+        return {
+            nombre,
+            mensaje,
+            fecha: new Date().getTime(),
+            isAdmin: true,
+            foto
+        }
+    } else return {
         nombre,
         mensaje,
-        fecha: new Date().getTime()
+        fecha: new Date().getTime(),
+        foto
     }
 }
 

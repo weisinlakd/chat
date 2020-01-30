@@ -6,15 +6,142 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Chat</title>
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <!-- Page CSS -->
+    <link href="css/pages/chat-app-page.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/chat.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- You can change the theme colors from here -->
+    <link href="css/colors/default-dark.css" id="theme" rel="stylesheet">
+    <link rel="stylesheet" href="css/dark-mode.css">
 </head>
 
-<body>
-    <h1>Sala de Mensajes</h1>
+<body class="fix-header single-column card-no-border fix-sidebar">
+
+    <!-- ============================================================== -->
+    <!-- Main wrapper -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper">
+
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <div class="row">
+                <div class="col-1"></div>
+                <h1 class="col-9">Chat</h1>
+                <div class=" col-2">
+                    <input type="checkbox"  id="darkSwitch">
+                    <label  for="darkSwitch">Dark Mode</label>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                
+
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <div class="row animated fadeIn">
+                    <div class="col-12">
+                        <div class="card m-b-0">
+                            <!-- .chat-row -->
+                            <div class="chat-main-box bg-white">
+                                <!-- .chat-left-panel -->
+                                <div class="chat-left-aside bg-white">
+                                    <div class="open-panel"><i class="ti-angle-right"></i></div>
+                                    <div class="chat-left-inner bg-white">
+                                        <div class="form-material">
+                                            <input class="form-control p-20" type="text" placeholder="Buscar Contacto">
+                                        </div>
+                                        <ul class="chatonline style-none" id="divUsuarios">
+                                            
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- .chat-left-panel -->
+                                <!-- .chat-right-panel -->
+                                <div class="chat-right-aside bg-white ">
+                                    <div class="chat-main-header">
+                                        
+                                    </div>
+                                   
+                                    <div class="chat-rbox bg-white">
+                            
+                                        <ul class="chat-list p-20 bg-white" id="divChatbox">
+                                            
+
+                                        </ul>
+                                        
+                                    </div>
+                                    <div class="card-body b-t">
+                                        <form id="formEnviar">   
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <input autofocus autocomplete="off" id=txtMensaje placeholder="Escribe tu mensaje aquí" class="form-control b-0"></input>
+                                                </div>
+                                                <div class="col-4 text-right">
+                                                    <button type="submit" class="btn btn-info btn-circle btn-lg"><i class="fa fa-paper-plane-o"></i> </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- .chat-right-panel -->
+                            </div>
+                            <!-- /.chat-row -->
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer bg-light">
+                Chat - Luciano Ludueña
+            </footer>
+            <!-- ============================================================== -->
+            <!-- End footer -->
+            <!-- ============================================================== -->
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
 
 
+
+
+
+
+    <script src="js/libs/jquery.min.js"></script>
+    <!-- <script src="js/dark-mode-switch.js"></script> -->
+    <script src="js/dark-mode-switch.min.js"></script>
     <script src="socket.io/socket.io.js"></script>
+    <script src="js/socket-chat-jquery.js"></script>
     <script src="js/socket-chat.js"></script>
-
+    
+    
 
 </body>
 

@@ -20,8 +20,8 @@ io.on('connection', (client) => {
         client.join(data.sala);
 
 
-        usuarios.agregarPersona( client.id, data.nombre, data.sala);
-
+        usuarios.agregarPersona( client.id, data.nombre, data.sala, data.foto);
+        client.broadcast.to(data.sala).emit('crearMensaje', crearMensaje('Administrador', `${data.nombre} entró a la sala.`,true))
         client.broadcast.to(data.sala).emit('listaPersona', usuarios.getPersonasPorSala(data.sala));
 
         callback(usuarios.getPersonasPorSala(data.sala));
@@ -38,7 +38,7 @@ io.on('connection', (client) => {
 
         let deletedUser = usuarios.borrarPersona(client.id);
 
-        client.broadcast.to(deletedUser.sala).emit('crearMensaje', crearMensaje('Administrador', `${deletedUser.nombre} salió`))
+        client.broadcast.to(deletedUser.sala).emit('crearMensaje', crearMensaje('Administrador', `${deletedUser.nombre} salió`,true))
         client.broadcast.to(deletedUser.sala).emit('listaPersona', usuarios.getPersonasPorSala(deletedUser.sala));
 
     });
@@ -54,16 +54,16 @@ io.on('connection', (client) => {
 
     });
 
-    client.on('crearMensaje', (data) => {
+    client.on('crearMensaje', (data, callback) => {
 
         let persona = usuarios.getPersona(client.id);
 
-        let mensaje = crearMensaje(persona.nombre, data.mensaje);
+        let mensaje = crearMensaje(persona.nombre, data.mensaje, null , persona.foto);
 
         client.broadcast.to(persona.sala).emit('crearMensaje', mensaje);
 
 
-
+        callback(mensaje)
     });
 
 
@@ -72,7 +72,7 @@ io.on('connection', (client) => {
         console.log(data, 'mensajePrivado')
         let persona = usuarios.getPersona(client.id);
         
-        let mensaje = crearMensaje(persona.nombre, data.mensaje);
+        let mensaje = crearMensaje(persona.nombre, data.mensaje, null , persona.foto);
 
         client.broadcast.to(data.to).emit('mensajePrivado', mensaje);
     })
